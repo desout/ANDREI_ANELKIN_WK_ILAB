@@ -1,6 +1,6 @@
-import {module } from 'angular';
+import { module } from 'angular';
 import { EmailService } from './services/email.service';
-import { emailServiceDecorator } from './utils/emailServiceDecorator';
+import { emailServiceDecorator } from './decorators/emailServiceDecorator';
 import { FeedbackComponent } from './components/feedback/feedback.component';
 
 

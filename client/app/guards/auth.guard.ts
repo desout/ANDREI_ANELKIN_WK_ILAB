@@ -4,7 +4,7 @@ import { IHttpResponse } from 'angular';
 import { LoggingService } from '../utils/loggingService';
 
 export class AuthGuard {
-  static $inject = ['$rootScope', '$state', '$http','loggingService'];
+  static $inject = ['$rootScope', '$state', '$http', 'loggingService'];
   static NAME: string = 'authGuard';
   private rootUrl = 'http:///localhost:8000/account';
 
@@ -12,7 +12,7 @@ export class AuthGuard {
   }
 
   public canActivate = (): Promise<void> => {
-    this.loggingService.log(AuthGuard.NAME,'checking authorization');
+    this.loggingService.log(AuthGuard.NAME, 'checking authorization');
     return this.http.get<AuthResponseType>(this.rootUrl + '/auth').then((res: IHttpResponse<AuthResponseType>) => {
       const response: AuthResponseType = res.data;
       if (!response.success) {

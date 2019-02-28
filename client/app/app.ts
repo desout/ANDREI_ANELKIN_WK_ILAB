@@ -5,7 +5,7 @@ import 'angular-translate';
 import { AppComponent } from './app.component';
 import { UserService } from './services/user.services';
 import './app.scss';
-import {feedback} from './feedbackModule';
+import { feedback } from './feedbackModule';
 import { ForgotPasswordPageComponent } from './components/forgot-password-page/forgot-password-page.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
@@ -33,7 +33,7 @@ import { confirmClickAction } from './utils/confirmClickAction';
 import { routeLinkActive } from './utils/routeLinkActive';
 import { UserNameValidator } from './validators/user-name.validator';
 import { requestLogging } from './utils/requestLogging';
-import { provideDecorator } from './provideDecorator';
+import { provideDecorator } from './decorators/provideDecorator';
 
 export const app = module('app', [
   'ui.router',

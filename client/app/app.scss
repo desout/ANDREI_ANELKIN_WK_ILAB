@@ -3,11 +3,13 @@
 main {
   margin-top: 70px;
 }
-@media screen and (max-width: 1273px){
-  main{
+
+@media screen and (max-width: 1273px) {
+  main {
     margin-top: 100px;
   }
 }
+
 .lmask {
   position: absolute;
   height: 100%;

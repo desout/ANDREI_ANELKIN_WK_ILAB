@@ -1,10 +1,10 @@
-import {verify, VerifyErrors} from 'jsonwebtoken';
+import { verify, VerifyErrors } from 'jsonwebtoken';
 
 export const SECRET_TOKEN = 'gfndnkxgdnodgfohifdgohigfhoid';
-import {Request, Response} from 'express';
+import { Request, Response } from 'express';
 
-export const checkToken = (req: Request, res: Response, next: any ) => {
-  const { authorization } = req.cookies ;
+export const checkToken = (req: Request, res: Response, next: any) => {
+  const {authorization} = req.cookies;
   if (authorization) {
 
     verify(authorization, SECRET_TOKEN, undefined, (err: VerifyErrors) => {
@@ -19,7 +19,7 @@ export const checkToken = (req: Request, res: Response, next: any ) => {
       }
     });
   } else {
-    return  res.sendStatus(400).json({
+    return res.sendStatus(400).json({
       success: false,
       message: 'auth token is not supplied'
     });

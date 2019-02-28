@@ -3,7 +3,7 @@ import { UserService } from '../services/user.services';
 import { LoggingService } from '../utils/loggingService';
 
 export class RoleGuard {
-  static $inject = ['$rootScope', '$state', '$http', 'userService','loggingService'];
+  static $inject = ['$rootScope', '$state', '$http', 'userService', 'loggingService'];
   static NAME: string = 'roleGuard';
 
   constructor(private scope: IScope, private state: ng.ui.IStateService, private http: ng.IHttpService, private userService: UserService, private loggingService: LoggingService) {

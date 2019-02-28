@@ -1,4 +1,3 @@
-
 export interface User {
   id?: number;
   age?: number;
@@ -12,6 +11,7 @@ export interface User {
   role: string;
 
 }
+
 export function createUser(name: string,
                            password: string,
                            dateOfBirth: string,

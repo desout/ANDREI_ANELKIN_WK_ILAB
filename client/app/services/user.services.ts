@@ -80,7 +80,8 @@ export class UserService {
     return from(this.$http.put<User>(url, user).then(((res: IHttpResponse<User>) => res.data))).pipe(map((letUser) => this.getLocalUser(letUser)), tap((user) => this.updateLocalCurrentUser(user)));
   }
 
-  updateLocalCurrentUser(user: User): void {;
+  updateLocalCurrentUser(user: User): void {
+    ;
     this.loggingService.log(UserService.NAME, `Updating local current user`);
     this.currentUser$.next(user);
   }
@@ -90,7 +91,7 @@ export class UserService {
     this.loggingService.log(UserService.NAME, `Getting current user`);
     return from(this.$http.get<User>(url).then(((res: IHttpResponse<User>) => res.data)).catch(() => undefined)).pipe(map((user) => {
       if (user === 'Bad Request') {
-          user = null;
+        user = null;
       } else {
         user = this.getLocalUser(user);
       }
@@ -109,6 +110,7 @@ export class UserService {
       role: user.role
     };
   }
+
   getUserForAddSend(user: User): User {
     return {
       name: user.name,
@@ -120,6 +122,7 @@ export class UserService {
       role: user.role
     };
   }
+
   getLocalUser(user: User): User {
     return {
       id: user.id,

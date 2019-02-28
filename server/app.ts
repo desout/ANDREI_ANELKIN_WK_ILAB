@@ -1,4 +1,3 @@
-
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as cors from 'cors';
@@ -12,12 +11,12 @@ import {
   loginUserFn, logoutUserFn, updateCurrentUserFn, updatePasswordFn,
   updateUserFn
 } from './server/serverWorker';
-import {checkToken} from './server/middleware';
+import { checkToken } from './server/middleware';
 import * as cookieParser from 'cookie-parser';
 
 const options = {
-    origin: 'http://localhost:9001',
-    credentials: true
+  origin: 'http://localhost:9001',
+  credentials: true
 };
 
 const app = express();
@@ -25,13 +24,13 @@ const port = 8000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-    extended: true
+  extended: true
 }));
 app.use(cors(options));
 app.use(cookieParser());
 
 app.listen(port, () => {
-    console.log(`Server was started on ${port} port`);
+  console.log(`Server was started on ${port} port`);
 });
 app.get('/users', checkToken, (req, res) => getUsersFn(req, res));
 app.get('/users/:id', checkToken, (req, res) => getUserFn(req, res));
@@ -45,5 +44,5 @@ app.post('/account/logout', (req, res) => logoutUserFn(req, res));
 app.get('/account/auth', (req, res) => checkTokenAuth(req, res));
 app.post('/account/updatePassword', (req, res) => updatePasswordFn(req, res));
 app.post('/users/search', (req, res) => getUsersFilterFn(req, res));
-app.get( '/currentUser', checkToken, (req, res) => getCurrentUserFn(req, res));
+app.get('/currentUser', checkToken, (req, res) => getCurrentUserFn(req, res));
 app.put('/currentUser', checkToken, (req, res) => updateCurrentUserFn(req, res));
