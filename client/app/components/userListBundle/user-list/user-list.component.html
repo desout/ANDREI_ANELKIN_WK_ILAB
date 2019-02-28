@@ -1,0 +1,10 @@
+<div class="container">
+    <div class="card">
+        <div>
+            <user-list-toggle-component></user-list-toggle-component>
+        </div>
+        <div class="listView">
+            <user-list-view-component ng-if="$ctrl.userListFactory.isToggled"></user-list-view-component>
+        </div>
+    </div>
+</div>

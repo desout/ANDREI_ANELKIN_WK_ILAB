@@ -1,0 +1,14 @@
+<div
+    class="listViewContainer card-body"
+    ng-init="$ctrl.ngOnInit()"
+>
+    <users-search-component></users-search-component>
+    <div class="elementsCont">
+        <div
+            ng-click="$ctrl.onItemClick($index)"
+            ng-repeat="user in $ctrl.userDropDownService.users"
+        >
+            <user-item-component user="user"></user-item-component>
+        </div>
+    </div>
+</div>

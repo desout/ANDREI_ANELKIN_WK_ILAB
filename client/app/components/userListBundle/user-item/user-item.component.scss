@@ -1,0 +1,17 @@
+.leftSideInfo {
+  width: 100%;
+  flex-direction: column;
+}
+
+.rightSideInfo {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.item {
+  font-size: 13px;
+  display: flex;
+  flex-direction: row;
+}
+

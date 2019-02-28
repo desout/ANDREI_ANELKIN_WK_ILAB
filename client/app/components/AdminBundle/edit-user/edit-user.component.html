@@ -1,0 +1,218 @@
+<br>
+<div
+    class="modal-window container"
+    ng-init="$ctrl.setUser()"
+>
+    <div class="modal-window-body">
+        <button
+            class="close"
+            ng-click="$ctrl.onClickClose()"
+        >X
+        </button>
+        <div>
+            <form
+                ng-submit="$ctrl.onSubmit()"
+                name="userForm"
+            >
+                <div class="form-group">
+                    <label>{{'INFO.USERNAME' | translate}}
+                        <input
+                            ng-disabled="$ctrl.dropDownService.selectedUser.role === 'ADMIN'"
+                            class="form-control"
+                            name="userName"
+                            ng-model="$ctrl.user.name"
+                            suit-name
+                        >
+                    </label>
+                    <div ng-show="userForm.userName.$pending">{{'ERROR.VALIDATING' | translate}}</div>
+                    <div
+                        ng-show="userForm.userName.$submitted || userForm.userName.$touched"
+                    >
+                        <div
+                            ng-show="userForm.userName.$error['minlength']"
+                            class="alert alert-danger"
+                        >
+                            {{'ERROR.MINLENGTH' | translate}}
+                        </div>
+                        <div
+                            ng-show="userForm.userName.$error['required']"
+                            class="alert alert-danger"
+                        >
+                            {{'INFO.USERNAME' | translate}} {{'ERROR.REQUIRED' | translate}}
+                        </div>
+                        <div
+                            ng-show="userForm.userName.$error['suitName']"
+                            class="alert alert-danger"
+                        >
+                            {{'ERROR.INCORRECTUSERNAME' | translate}}
+                        </div>
+                        <div
+                            ng-show="userForm.userName.$error['isBadName']"
+                            class="alert alert-danger"
+                        >
+                            {{'ERROR.USERNOTAVAILABLE' | translate}}
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="form-group"
+                    ng-if="!$ctrl.user.id"
+                >
+                    <label>{{'INFO.PASSWORD' | translate}}
+                        <input
+                            type="password"
+                            class="form-control"
+                            ng-model="$ctrl.user.password"
+                            name="password"
+                            required
+                            minlength="5"
+                        >
+                    </label>
+                    <div ng-show="userForm.password.$submitted || userForm.password.$touched">
+                        <div
+                            ng-show="userForm.password.$error['required']"
+                            class="alert alert-danger"
+                        >
+                            {{'INFO.PASSWORD' | translate}} {{'ERROR.REQUIRED' | translate}}.
+                        </div>
+                        <div
+                            ng-show="userForm.password.$error['minlength']"
+                            class="alert alert-danger"
+                        >
+                            {{'ERROR.MINLENGTH' | translate}} 4
+                        </div>
+                    </div>
+
+                </div>
+                <div ng-if="$ctrl.user.id">
+                    <div class="form-group">
+
+                        <label>{{'INFO.BIRTHDAY' | translate}}
+                            <input
+                                class="form-control"
+                                name="dateOfBirth"
+                                required
+                                ng-model="$ctrl.user.dateOfBirth"
+                            >
+                        </label>
+
+                        <div
+                            ng-show="userForm.dateOfBirth.$submitted || userForm.dateOfBirth.$touched"
+                        >
+                            <div
+                                ng-show="userForm.dateOfBirth.$error['required']"
+                                class="alert alert-danger"
+                            >
+                                {{'INFO.BIRTHDAY' | translate}} {{'ERROR.REQUIRED' | translate}}
+                            </div>
+                            <div
+                                ng-show="userForm.dateOfBirth.$error['dateValue']"
+                                class="alert alert-danger"
+                            >
+                                {{'ERROR.DATEFORMAT' | translate}} : 'YYYY/MM/DD', 'DD MMMM YYYY', 'DD-MMM-YY'
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <label>{{'INFO.DATEOFLOGIN' | translate}}
+                            <input
+                                class="form-control"
+                                name="dateOfFirstLogin"
+                                required
+                                ng-model="$ctrl.user.dateOfFirstLogin"
+                            >
+                        </label>
+
+                        <div
+                            ng-show="userForm.dateOfFirstLogin.$submitted || userForm.dateOfFirstLogin.$touched"
+                        >
+                            <div
+                                ng-show="userForm.dateOfFirstLogin.$error['required']"
+                                class="alert alert-danger"
+                            >
+                                {{'INFO.DATEOFLOGIN' | translate}} {{'ERROR.REQUIRED' | translate}}
+                            </div>
+                            <div
+                                ng-show="userForm.dateOfFirstLogin.$error['dateValue']"
+                                class="alert alert-danger"
+                            >
+                                {{'ERROR.DATEFORMAT' | translate}}: 'YYYY/MM/DD', 'DD MMMM YYYY', 'DD-MMM-YY'
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <label>{{'INFO.DATEOFNEXTNOTIF' | translate}}
+                            <input
+                                class="form-control"
+                                name="dateNextNotification"
+                                required
+                                ng-model="$ctrl.user.dateNextNotification"
+                            >
+                        </label>
+
+                        <div
+                            ng-show="userForm.dateNextNotification.$submitted || userForm.dateNextNotification.$touched"
+                        >
+                            <div
+                                ng-show="userForm.dateNextNotification.$error['required']"
+                                class="alert alert-danger"
+                            >
+                                {{'INFO.DATEOFNEXTNOTIF' | translate}} {{'ERROR.REQUIRED' | translate}}
+                            </div>
+                            <div
+                                ng-show="userForm.dateNextNotification.$error['dateValue']"
+                                class="alert alert-danger"
+                            >
+                                {{'ERROR.DATEFORMAT' | translate}} : 'YYYY/MM/DD', 'DD MMMM YYYY', 'DD-MMM-YY'
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <label>{{'INFO.INFORMATION' | translate}}
+                            <input
+                                class="form-control"
+                                name="information"
+                                required
+                                ng-model="$ctrl.user.information"
+                            >
+                        </label>
+
+                        <div
+                            ng-show="userForm.information.$submitted || userForm.information.$touched"
+                        >
+                            <div
+                                ng-show="userForm.information.$error['required']"
+                                class="alert alert-danger"
+                            >
+                                {{'INFO.INFORMATION' | translate}} {{'ERROR.REQUIRED' | translate}}
+                            </div>
+                            <div
+                                ng-show="userForm.information.$error['minlength']"
+                                class="alert alert-danger"
+                            >
+                                {{'ERROR.MINLENGTH' | translate}} 4
+                            </div>
+                        </div>
+                    </div>
+                    <button
+                        type="button"
+                        class="btn btn-warning"
+                        ng-confirm-click="{{'INFO.SUBMITTEXTFORDELETE' | translate:{userName: $ctrl.user.name} }}"
+                        confirmed-click="$ctrl.onClickDelete(userForm)"
+                    >{{'INFO.DELETEBTN' | translate}}
+                    </button>
+                </div>
+                <button
+                    type="submit"
+                    class="btn btn-success"
+                    ng-disabled="!$ctrl.isEmptyObject(userForm.$error)"
+                >{{'INFO.SUBMITBTN' | translate}}
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal-background"></div>

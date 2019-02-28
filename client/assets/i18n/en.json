@@ -1,0 +1,58 @@
+{
+  "HOME": {
+    "SELECT": "Change language",
+    "LOGGERHEAD": "Logged by",
+    "NAVINFO": "Information of user",
+    "NAVEDIT": "Edit user",
+    "NAVLOGOUT": "Log out",
+    "NAVADMIN": "Edit users",
+    "LOADING":"Loading... Please wait",
+    "FEEDBACK": "Send feedback"
+  },
+  "LOGIN":{
+    "TITLE": "Welcome,please Log in",
+    "LOGGED": "You are Log in now, if you want, you can change account"
+  },
+  "FEEDBACK": {
+    "TITLE": "Feedback",
+    "TO": "To",
+    "FROM": "From",
+    "SIGNATURE": "Signature",
+    "CONTENT": "Content",
+    "SET": "Set",
+    "SENDFROMDECORATOR": "Send from decorator"
+  },
+  "INFO":{
+    "USERNAME":"User name",
+    "PASSWORD": "Password",
+    "BIRTHDAY":"Birth day",
+    "DATEOFLOGIN":"Date of login",
+    "DATEOFNEXTNOTIF":"Date of next notification",
+    "INFORMATION":"Information",
+    "SUBMITBTN":"Submit",
+    "FORGOTPASSWBTN":"Forgot password?",
+    "LOGOUT":"Log out",
+    "FORGOTPAGETITLE": "Please, input all fields",
+    "OLDPASSWORD":"Old password",
+    "NEWPASSWORD":"New password",
+    "POPUPLOGIN":"Hello, You are logged in as",
+    "POPUPCLOSE":"Close",
+    "POPUPHEADER": "Success",
+    "EDITBUTTON": "Edit user",
+    "NEWBUTTON": "New user",
+    "DELETEBTN": "Delete",
+    "BACKTOLOGIN": "Return to Login page",
+    "SUBMITTEXTFORDELETE": "After delete {{userName}} no one can login with this credentials, until nodejs started"
+  },
+  "ERROR":{
+    "VALIDATING": "Validating...",
+    "REQUIRED":"is required",
+    "MINLENGTH":"Min length is",
+    "USERNOTFOUND": "This user not found",
+    "USERNOTAVAILABLE": "User name not available",
+    "BADPASSWORDLOGIN":"Incorrect username or password",
+    "INCORRECTUSERNAME":"userName incorrect (1-2 words with first letter - upper). NO numbers and special symbols",
+    "DATEFORMAT":"Incorrect format. Correct formats",
+    "EMAILFORMAT": "Should has Email format"
+  }
+}

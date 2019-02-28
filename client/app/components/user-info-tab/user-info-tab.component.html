@@ -1,0 +1,68 @@
+<div class="container">
+    <div ng-show="$ctrl.userService.currentUser.name">
+        <div class="form-group row">
+            <label class="col-form-label">{{'INFO.USERNAME' | translate}}
+                <div class="col-sm-10">
+                    <input
+                        type="text"
+                        readonly
+                        class="form-control-plaintext"
+                        value="{{ $ctrl.userService.currentUser.name }}"
+                    >
+                </div>
+            </label>
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label">{{'INFO.BIRTHDAY' | translate}}
+                <div class="col-sm-10">
+                    <input
+                        type="text"
+                        readonly
+                        class="form-control-plaintext"
+                        value="{{ $ctrl.userService.currentUser.dateOfBirth }}"
+                    >
+                </div>
+            </label>
+        </div>
+        <div class="form-group row">
+            <label class=" col-form-label">{{'INFO.DATEOFLOGIN' | translate}}
+                <div class="col-sm-10">
+                    <input
+                        type="text"
+                        readonly
+                        class="form-control-plaintext"
+                        value="{{ $ctrl.userService.currentUser.dateOfFirstLogin }}"
+                    >
+                </div>
+            </label>
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label">{{'INFO.DATEOFNEXTNOTIF' | translate}}
+                <div class="col-sm-10">
+                    <input
+                        type="text"
+                        readonly
+                        class="form-control-plaintext"
+                        value="{{ $ctrl.userService.currentUser.dateNextNotification }}"
+                    >
+                </div>
+            </label>
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label">{{'INFO.INFORMATION' | translate}}
+                <div>
+                    <input
+                        type="text"
+                        readonly
+                        class="form-control-plaintext"
+                        value="{{ $ctrl.userService.currentUser.information }}"
+                    >
+                </div>
+            </label>
+        </div>
+    </div>
+    <div
+        class='lmask'
+        ng-show="!($ctrl.userService.currentUser.name)"
+    ></div>
+</div>

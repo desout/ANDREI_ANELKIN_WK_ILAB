@@ -1,0 +1,77 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <ul class="navbar-nav mr-auto">
+        <li>
+            <span class="navbar-brand">{{$ctrl.title}}</span>
+        </li>
+        <li
+            ng-show="$ctrl.userService.currentUser"
+            class="nav-item mr-2"
+        >
+            <a
+                class="nav-link p-2 text-light"
+                ui-sref="app.infoTab"
+                route-link-active
+            >{{'HOME.NAVINFO' | translate}} </a>
+        </li>
+        <li
+            ng-show="$ctrl.userService.currentUser"
+            class="nav-item mr-2"
+        >
+            <a
+                class="nav-link p-2 text-light"
+                ui-sref="app.editTab"
+                route-link-active
+            >{{'HOME.NAVEDIT' | translate}} </a>
+        </li>
+        <li
+            ng-show="$ctrl.userService.currentUser.role === 'ADMIN'"
+            class="nav-item mr-2"
+        >
+            <a
+                class="nav-link p-2 text-light"
+                ui-sref="app.adminTab"
+                route-link-active
+            >{{'HOME.NAVADMIN' | translate}}</a>
+        </li>
+        <li
+            ng-show="$ctrl.userService.currentUser.role === 'USER'"
+            class="nav-item mr-2"
+        >
+            <a
+                class="nav-link p-2 text-light"
+                ui-sref="feedback"
+                route-link-active
+            >{{'HOME.FEEDBACK' | translate}}</a>
+        </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+        <li
+            ng-show="$ctrl.userService.currentUser"
+            class="nav-item mr-3"
+        >
+            <span class="nav-link p-2 text-light">{{'HOME.LOGGERHEAD' | translate}} {{$ctrl.userService.currentUser.name}}</span>
+
+        </li>
+        <li
+            ng-show="$ctrl.userService.currentUser"
+            class="nav-item mr-3"
+        >
+            <a
+                class="btn btn-outline-warning text-light"
+                ng-click="$ctrl.onClickLogout()"
+            >{{'HOME.NAVLOGOUT' | translate}}</a>
+        </li>
+        <li class="nav-item">
+            <label class="nav-link">
+                {{ 'HOME.SELECT' | translate }}
+                <select
+                    name="langSelect"
+                    ng-model="$ctrl.currentLang"
+                    ng-change="$ctrl.$translate.use($ctrl.currentLang)"
+                >
+                    <option ng-repeat="lang in $ctrl.$translate.getAvailableLanguageKeys()">{{ lang }}</option>
+                </select>
+            </label>
+        </li>
+    </ul>
+</nav>

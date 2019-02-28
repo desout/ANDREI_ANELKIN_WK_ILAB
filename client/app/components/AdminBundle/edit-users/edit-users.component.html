@@ -1,0 +1,16 @@
+<div class="container">
+    <user-list-component></user-list-component>
+    <div class="buttons">
+        <button
+            ng-click="$ctrl.onClickNew()"
+            class="btn btn-success"
+        >{{'INFO.NEWBUTTON' | translate}}
+        </button>
+        <button
+            ng-click="$ctrl.onClickEdit()"
+            class="btn btn-info"
+        >{{'INFO.EDITBUTTON' | translate}}
+        </button>
+    </div>
+    <edit-user-component ng-if="$ctrl.adminFactory.showEdit"></edit-user-component>
+</div>

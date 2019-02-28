@@ -1,0 +1,87 @@
+<div class="container">
+    <div ng-show="!(userService.currentUser$ | async:this).name">
+        <h1>{{ 'LOGIN.TITLE' | translate }}</h1>
+        <form
+            name='loginForm'
+            ng-submit="$ctrl.onSubmit(loginForm)"
+        >
+            <div class="form-group">
+                <label>{{'INFO.USERNAME' | translate}}
+                    <input
+                        class="form-control"
+                        ng-model="$ctrl.user.name"
+                        name="name"
+                        required
+                        suit-name
+                    >
+                </label>
+                <div ng-show="loginForm.name.$pending">{{'ERROR.VALIDATING' | translate}}</div>
+                <div ng-show="loginForm.$submitted || loginForm.login.$touched">
+                    <div
+                        ng-show="loginForm.name.$error['required']"
+                        class="alert alert-danger"
+                    >
+                        {{'INFO.USERNAME' | translate}} {{'ERROR.REQUIRED' | translate}}.
+                    </div>
+                    <div
+                        ng-show="loginForm.name.$error['isBadName']"
+                        class="alert alert-danger"
+                    >
+                        {{'ERROR.USERNOTFOUND' | translate}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>{{'INFO.PASSWORD' | translate}}
+                    <input
+                        type="password"
+                        class="form-control"
+                        ng-model="$ctrl.user.password"
+                        ng-change="$ctrl.onChange(loginForm.password)"
+                        name="password"
+                        required
+                    >
+                </label>
+                <div ng-show="loginForm.$submitted || loginForm.password.$touched">
+                    <div
+                        ng-show="loginForm.password.$error['required']"
+                        class="alert alert-danger"
+                    >
+                        {{'INFO.PASSWORD' | translate}} {{'ERROR.REQUIRED' | translate}}.
+                    </div>
+                    <div
+                        ng-show="loginForm.password.$error['minlength']"
+                        class="alert alert-danger"
+                    >
+                        {{'ERROR.MINLENGTH' | translate}} 4
+                    </div>
+                    <div
+                        ng-show="loginForm.password.$error['badPassword']"
+                        class="alert alert-danger"
+                    >
+                        {{'ERROR.BADPASSWORDLOGIN' | translate}}
+                    </div>
+                </div>
+            </div>
+            <button
+                type="submit"
+                class="btn btn-success"
+                ng-disabled="!$ctrl.isEmptyObject(loginForm.$error)"
+            >{{'INFO.SUBMITBTN' | translate}}
+            </button>
+            <a
+                ui-sref="auth.forgotPassword"
+                class="btn btn-info"
+            >{{'INFO.FORGOTPASSWBTN' | translate}}</a>
+        </form>
+    </div>
+    <div ng-show="(userService.currentUser$ | async:this).name">
+        <h1>{{ 'LOGIN.LOGGED' | translate }}</h1>
+        <button
+            ng-click="$ctrl.onClickLogout()"
+            class="btn btn-danger align-self-lg-center"
+        > {{'INFO.LOGOUT' | translate}}
+        </button>
+    </div>
+</div>

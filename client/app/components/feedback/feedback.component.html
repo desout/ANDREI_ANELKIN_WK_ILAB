@@ -1,0 +1,100 @@
+<div class="container">
+    <div>
+        <div><label>{{'FEEDBACK.SET' | translate}} {{'FEEDBACK.FROM' | translate}}<input
+            type="text"
+            class="form-control"
+            ng-model="$ctrl.setFromValue"
+        >
+            <button ng-click="$ctrl.setFrom($ctrl.setFromValue)">{{'FEEDBACK.SET' | translate}}</button>
+        </label></div>
+        <div><label>{{'FEEDBACK.SET' | translate}} {{'FEEDBACK.TO' | translate}}<input
+            type="text"
+            class="form-control"
+            ng-model="$ctrl.setToValue"
+        >
+            <button ng-click="$ctrl.setTo($ctrl.setToValue)">{{'FEEDBACK.SET' | translate}}</button>
+        </label></div>
+        <div><label>{{'FEEDBACK.SET' | translate}} {{'FEEDBACK.CONTENT' | translate}}<input
+            type="text"
+            class="form-control"
+            ng-model="$ctrl.setContentValue"
+        >
+            <button ng-click="$ctrl.setContent($ctrl.setContentValue)">{{'FEEDBACK.SET' | translate}}</button>
+        </label></div>
+        <div><label>{{'FEEDBACK.SET' | translate}} {{'FEEDBACK.SIGNATURE' | translate}}<input
+            type="text"
+            class="form-control"
+            ng-model="$ctrl.setSignatureValue"
+        >
+            <button ng-click="$ctrl.setSignature($ctrl.setSignatureValue)">{{'FEEDBACK.SET' | translate}}</button>
+        </label></div>
+        <h1>{{ 'FEEDBACK.TITLE' | translate }} </h1>
+
+        <form
+            name='feedbackForm'
+            ng-submit="$ctrl.onSubmit(feedbackForm)"
+        >
+            <div class="form-group">
+                <label>{{'FEEDBACK.FROM' | translate}}
+                    <input
+                        class="form-control"
+                        ng-model="$ctrl.feedback.from"
+                        name="from"
+                    >
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label>{{'FEEDBACK.TO' | translate}}
+                    <input
+                        class="form-control"
+                        ng-model="$ctrl.feedback.to"
+                        name="to"
+                        type="email"
+                    >
+                </label>
+                <div ng-show="feedbackForm.$submitted || feedbackForm.to.$touched">
+                    <div
+                        ng-show="feedbackForm.to.$error['email']"
+                        class="alert alert-danger"
+                    >
+                        {{'FEEDBACK.TO' | translate}} {{'ERROR.EMAILFORMAT' | translate}}.
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>{{'FEEDBACK.CONTENT' | translate}}
+                    <textarea
+                        class="form-control"
+                        ng-model="$ctrl.feedback.content"
+                        name="content"
+                    ></textarea>
+                </label>
+            </div>
+            <div class="form-group">
+                <label>{{'FEEDBACK.SIGNATURE' | translate}}
+                    <textarea
+                        class="form-control"
+                        ng-model="$ctrl.feedback.signature"
+                        name="signature"
+                    ></textarea>
+                </label>
+            </div>
+            <button
+                type="submit"
+                class="btn btn-success"
+                ng-disabled="!$ctrl.isEmptyObject(feedbackForm.$error)"
+            >{{'INFO.SUBMITBTN' | translate}}
+            </button>
+
+            <button
+                type="button"
+                ng-click="$ctrl.sendToDecorator()"
+                class="btn btn-success"
+                ng-disabled="!$ctrl.isEmptyObject(feedbackForm.$error)"
+            >{{'FEEDBACK.SENDFROMDECORATOR' | translate}}
+            </button>
+        </form>
+    </div>
+</div>

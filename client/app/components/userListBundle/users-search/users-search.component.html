@@ -1,0 +1,21 @@
+<div class="searchComponent">
+    <div class="input-group">
+        <input
+            type="text"
+            name="searchInput"
+            placeholder="Search"
+            class="form-control"
+            ng-keyup="$ctrl.search($event.target.value)"
+        >
+        <button
+            type="button"
+            ng-click="$ctrl.search($event.target.value)"
+            class="btn btn-success material-icons"
+        >search
+        </button>
+    </div>
+</div>
+<div
+    ng-show="$ctrl.searching"
+    class="loader"
+></div>
