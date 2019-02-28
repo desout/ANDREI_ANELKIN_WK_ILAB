@@ -18,7 +18,7 @@ export class EmailService {
     if (email.to === '' || email.from === '') {
       this.loggingService.log(EmailService.NAME, 'SEND MAIL FROM SERVICE ERROR');
     } else {
-      console.log(`Sanded Feedback From Service: ${JSON.stringify(email)}`);
+      this.loggingService.log(EmailService.NAME, `Sanded Feedback From Service: ${JSON.stringify(email)}`);
       this.loggingService.log(EmailService.NAME, 'SEND MAIL FROM SERVICE SUCCESS');
     }
   }
