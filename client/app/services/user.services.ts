@@ -29,31 +29,39 @@ export class UserService {
   getUsers(): Observable<User[]> {
     const url = `${this.rootUrl}/users`;
     this.loggingService.log(UserService.NAME, `Get all users`);
-    return from(this.$http.get<User[]>(url).then((res: IHttpResponse<User[]>) => res.data)).pipe(map((users: User[]) => users.map((user) => this.getLocalUser(user))));
+    return from(this.$http.get<User[]>(url)
+      .then((res: IHttpResponse<User[]>) => res.data))
+      .pipe(map((users: User[]) => users.map((user) => this.getLocalUser(user))));
   }
 
   getUser(id: number): Observable<User> {
     const url = `${this.rootUrl}/users/${id}`;
     this.loggingService.log(UserService.NAME, `Get user by id`);
-    return from(this.$http.get<User>(url).then((res: IHttpResponse<User>) => res.data)).pipe(map((user) => this.getLocalUser(user)));
+    return from(this.$http.get<User>(url)
+      .then((res: IHttpResponse<User>) => res.data))
+      .pipe(map((user) => this.getLocalUser(user)));
   }
 
   addUser(user: User): Observable<User> {
     const url = `${this.rootUrl}/users/add`;
     this.loggingService.log(UserService.NAME, `Add user`);
-    return from(this.$http.post<User>(url, this.getUserForAddSend(user)).then((res: IHttpResponse<User>) => res.data));
+    return from(this.$http.post<User>(url, this.getUserForAddSend(user))
+      .then((res: IHttpResponse<User>) => res.data));
   }
 
   updateUser(user: User): Observable<User> {
     const url = `${this.rootUrl}/users/${user.id}`;
     this.loggingService.log(UserService.NAME, `Update user`);
-    return from(this.$http.put<User>(url, this.getUserForSend(user)).then((res: IHttpResponse<User>) => res.data));
+    return from(this.$http.put<User>(url, this.getUserForSend(user))
+      .then((res: IHttpResponse<User>) => res.data));
   }
 
   deleteUser(id: number): Observable<User> {
     const url = `${this.rootUrl}/users/${id}`;
     this.loggingService.log(UserService.NAME, 'deleting user');
-    return from(this.$http.delete<User>(url).then(((res: IHttpResponse<User>) => res.data))).pipe(map((user) => this.getLocalUser(user)));
+    return from(this.$http.delete<User>(url)
+      .then(((res: IHttpResponse<User>) => res.data)))
+      .pipe(map((user) => this.getLocalUser(user)));
   }
 
   updatePassword(user: UpdatePasswordUser): Observable<boolean> {
@@ -71,32 +79,40 @@ export class UserService {
   getFilterUsers(term: string): Observable<User[]> {
     const url = `${this.rootUrl}/users/search`;
     this.loggingService.log(UserService.NAME, `Getting filtered user`);
-    return from(this.$http.post<User[]>(url, {name: term}).then(((res: IHttpResponse<User[]>) => res.data))).pipe(map((users: User[]) => users.map((user) => this.getLocalUser(user))));
+    return from(this.$http.post<User[]>(url, {name: term})
+      .then(((res: IHttpResponse<User[]>) => res.data)))
+      .pipe(map((users: User[]) => users.map((user) => this.getLocalUser(user))));
   }
 
   updateCurrentUser(user: User): Observable<User> {
     const url = `${this.rootUrl}/currentUser`;
     this.loggingService.log(UserService.NAME, `Updating current user`);
-    return from(this.$http.put<User>(url, user).then(((res: IHttpResponse<User>) => res.data))).pipe(map((letUser) => this.getLocalUser(letUser)), tap((user) => this.updateLocalCurrentUser(user)));
+    return from(this.$http.put<User>(url, user)
+      .then(((res: IHttpResponse<User>) => res.data)))
+      .pipe(map((letUser) => this.getLocalUser(letUser)),
+        tap((user) => this.updateLocalCurrentUser(user)));
   }
 
   updateLocalCurrentUser(user: User): void {
     this.loggingService.log(UserService.NAME, `Updating local current user`);
-    this.currentUser$.next(user ? this.getLocalUser(user): null);
+    this.currentUser$.next(user ? this.getLocalUser(user) : null);
   }
 
   getCurrentUser(): Observable<User> {
     const url = `${this.rootUrl}/currentUser`;
     this.loggingService.log(UserService.NAME, `Getting current user`);
-    return from(this.$http.get<User>(url).then(((res: IHttpResponse<User>) => res.data)).catch(() => undefined)).pipe(map((user) => {
-      if (user === 'Bad Request') {
-        user = null;
-      } else {
-        user = this.getLocalUser(user);
-      }
-      this.updateLocalCurrentUser(user);
-      return user;
-    }));
+    return from(this.$http.get<User>(url)
+      .then(((res: IHttpResponse<User>) => res.data))
+      .catch(() => undefined))
+      .pipe(map((user) => {
+        if (user === 'Bad Request') {
+          user = null;
+        } else {
+          user = this.getLocalUser(user);
+        }
+        this.updateLocalCurrentUser(user);
+        return user;
+      }));
   }
 
   getUserForSend(user: User): User {
