@@ -27,7 +27,7 @@ export class UserDropDownService {
 
   getUsers = (): Observable<User[]> => this.userService.getUsers()
     .pipe(tap(() => this.loggingService.log(UserDropDownService.NAME, 'Getting all users')), map((users) => users.map((user) => this.getDropDownUser(user))),
-      tap((users) => this.users = users));
+      tap((users) => this.users = users))
 
   getDropDownUser(user: User): User {
     user.age = this.getAge(user.dateOfBirth);

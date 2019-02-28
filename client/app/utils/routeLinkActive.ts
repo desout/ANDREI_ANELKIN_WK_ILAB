@@ -1,17 +1,17 @@
-export function routeLinkActive($location) {
+export const routeLinkActive = ($location) => {
 
   const link = (scope, element, attrs) => {
-    scope.$watch(function () {
+    scope.$watch(() => {
         return $location.path();
       },
-      function (path) {
+      (path) => {
         var url = element.find('a').attr('href');
         if (url) {
           url = url.substring(1);
         }
 
-        if (path == url) {
-          element.addClass("active");
+        if (path === url) {
+          element.addClass('active');
         } else {
           element.removeClass('active');
         }
@@ -23,4 +23,4 @@ export function routeLinkActive($location) {
     restrict: 'A',
     link: link
   };
-}
+};

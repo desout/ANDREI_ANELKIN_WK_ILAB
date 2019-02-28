@@ -1,8 +1,7 @@
 import { module } from 'angular';
-import { EmailService } from './services/email.service';
-import { emailServiceDecorator } from './decorators/emailServiceDecorator';
-import { FeedbackComponent } from './components/feedback/feedback.component';
-
+import { EmailService } from '../../services/email.service';
+import { emailServiceDecorator } from '../../decorators/emailServiceDecorator';
+import { FeedbackComponent } from './feedback.component';
 
 export const feedback = module('feedback', [])
   .service(EmailService.NAME, EmailService)
@@ -14,6 +13,6 @@ export const feedback = module('feedback', [])
           name: 'feedback',
           url: '/feedback',
           component: FeedbackComponent.NAME
-        })
+        });
     }]
   );

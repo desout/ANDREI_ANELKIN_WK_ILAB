@@ -17,7 +17,7 @@ class EditorInfoUserTabController implements ng.IController {
   };
 
   onSubmit(form: HTMLFormElement): void {
-    if (this.user !== this.userService.currentUser) {
+    if (this.user.name !== this.userService.currentUser.name) {
       this.userService.checkUser(this.user.name).pipe(tap((response: boolean) => {
         if (response) {
           this.$scope.$apply(form.userName.$setValidity('isBadName', false));

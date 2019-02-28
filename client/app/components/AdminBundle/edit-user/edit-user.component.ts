@@ -25,7 +25,7 @@ export class EditUserController implements ng.IController {
 
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (!this.dropDownService.selectedUser) {
       this.user.role = 'USER';
       this.userService.addUser(this.user);
@@ -37,7 +37,7 @@ export class EditUserController implements ng.IController {
     this.adminFactory.showEdit = false;
   }
 
-  onClickDelete(form: HTMLFormElement) {
+  onClickDelete(form: HTMLFormElement): void {
     if (this.dropDownService.selectedUser.role !== 'ADMIN') {
       this.userService.deleteUser(this.dropDownService.selectedUser.id);
       this.dropDownService.getUsers().subscribe();
@@ -52,7 +52,7 @@ export class EditUserController implements ng.IController {
     }
   }
 
-  onClickClose() {
+  onClickClose(): void {
     this.adminFactory.showEdit = false;
   }
 
@@ -61,8 +61,6 @@ export class EditUserController implements ng.IController {
   }
 
   isEmptyObject = (obj): boolean => equals({}, obj);
-
-
 }
 
 export class EditUserComponent implements ng.IComponentOptions {
@@ -74,5 +72,4 @@ export class EditUserComponent implements ng.IComponentOptions {
     this.controller = EditUserController;
     this.templateUrl = require('./edit-user.component.html');
   }
-
 }

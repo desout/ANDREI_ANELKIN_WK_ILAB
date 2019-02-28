@@ -7,7 +7,6 @@ export interface FeedbackType {
   signature?: string;
 }
 
-
 export class EmailService {
   static $inject = [LoggingService.NAME];
   static NAME: string = 'emailService';
@@ -15,12 +14,12 @@ export class EmailService {
   constructor(private loggingService: LoggingService) {
   }
 
-  SendEmail(email: FeedbackType) {
+  SendEmail(email: FeedbackType): void {
     if (email.to === '' || email.from === '') {
-      this.loggingService.log(EmailService.NAME, 'SEND MAIL FROM SERVICE ERROR')
+      this.loggingService.log(EmailService.NAME, 'SEND MAIL FROM SERVICE ERROR');
     } else {
       console.log(`Sanded Feedback From Service: ${JSON.stringify(email)}`);
-      this.loggingService.log(EmailService.NAME, 'SEND MAIL FROM SERVICE SUCCESS')
+      this.loggingService.log(EmailService.NAME, 'SEND MAIL FROM SERVICE SUCCESS');
     }
   }
 

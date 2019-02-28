@@ -7,7 +7,7 @@ export class UserListToggleButtonController implements ng.IController {
   constructor(private userListFactory: UserListFactory) {
   }
 
-  onToggleClick() {
+  onToggleClick(): void {
     this.userListFactory.isToggled = !this.userListFactory.isToggled;
   }
 }

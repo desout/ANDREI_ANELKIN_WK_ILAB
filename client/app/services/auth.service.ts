@@ -26,14 +26,13 @@ export class AuthService {
   login(user: UserLogin): Observable<AuthResponseType> {
     return from(this.http.post<AuthResponseType>(`${this.rootUrl}/account/login`, user)
       .then(((res: IHttpResponse<AuthResponseType>) => res.data))).pipe(tap((response: AuthResponseType) => {
-      this.loggingService.log(AuthService.NAME, `login user: ${response.success ? 'success' : 'not success'}`)
+      this.loggingService.log(AuthService.NAME, `login user: ${response.success ? 'success' : 'not success'}`);
     }));
   }
 
   logout = (): Promise<void> => this.http.post(`${this.rootUrl}/account/logout`, {})
     .then(() => {
       this.loggingService.log(AuthService.NAME, `logout user`);
-      this.state.go('auth.login')
-    });
-
+      this.state.go('auth.login');
+    })
 }

@@ -21,11 +21,11 @@ export class UsersSearchController implements ng.IController {
       .subscribe((users) => this.userDropDownService.users = users);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.search('');
   }
 
-  search(term: string) {
+  search(term: string): void {
     this.searchUsersTerm.next(term);
   }
 }

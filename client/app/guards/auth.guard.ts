@@ -18,6 +18,6 @@ export class AuthGuard {
       if (!response.success) {
         this.state.go('auth.login');
       }
-    })
+    });
   }
 }

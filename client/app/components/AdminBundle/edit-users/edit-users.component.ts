@@ -9,16 +9,16 @@ export class EditUsersController implements ng.IController {
   constructor(private dropdownService: UserDropDownService, private adminFactory: AdminFactory, private timeout: ITimeoutService) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
-  onClickEdit() {
+  onClickEdit(): void {
     this.adminFactory.showEdit = false;
 
     this.timeout(() => this.adminFactory.showEdit = true, 100);
   }
 
-  onClickNew() {
+  onClickNew(): void {
     this.dropdownService.selectedUserHandle.next(-1);
     this.adminFactory.showEdit = false;
 

@@ -81,9 +81,8 @@ export class UserService {
   }
 
   updateLocalCurrentUser(user: User): void {
-    ;
     this.loggingService.log(UserService.NAME, `Updating local current user`);
-    this.currentUser$.next(user);
+    this.currentUser$.next(this.getLocalUser(user));
   }
 
   getCurrentUser(): Observable<User> {

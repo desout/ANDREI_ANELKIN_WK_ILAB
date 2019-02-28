@@ -1,9 +1,6 @@
-import { AuthResponseType, AuthService, UserLogin } from '../../services/auth.service';
-import { UserService } from '../../services/user.services';
 import { equals } from 'angular';
-import { tap } from 'rxjs/operators';
-import { EmailService, FeedbackType } from '../../services/email.service';
-import { feedback } from '../../feedbackModule';
+import { FeedbackType } from '../../services/email.service';
+import { feedback } from './feedbackModule';
 
 class FeedbackController implements ng.IController {
   static $inject = ['emailService'];

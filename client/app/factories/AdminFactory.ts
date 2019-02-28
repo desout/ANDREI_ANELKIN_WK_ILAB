@@ -1,11 +1,10 @@
 export interface AdminFactory {
-  showEdit: boolean
+  showEdit: boolean;
 }
 
-export function AdminFactory() {
+export const AdminFactory = () => {
   let showEdit = false;
   return {
     showEdit
-  }
-
-}
+  };
+};

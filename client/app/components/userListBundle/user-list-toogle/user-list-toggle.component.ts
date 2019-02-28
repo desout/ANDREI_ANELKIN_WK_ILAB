@@ -7,10 +7,6 @@ export class UserListToggleController implements ng.IController {
   constructor(public userDropdownService: UserDropDownService) {
   }
 
-  ngOnInit() {
-
-  }
-
 }
 
 export class UserListToggleComponent implements ng.IComponentOptions {

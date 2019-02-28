@@ -1,11 +1,10 @@
 export interface UserListFactory {
-  isToggled: boolean
+  isToggled: boolean;
 }
 
-export function UserListFactory() {
+export const UserListFactory = () => {
   let isToggled = false;
   return {
     isToggled
-  }
-
-}
+  };
+};

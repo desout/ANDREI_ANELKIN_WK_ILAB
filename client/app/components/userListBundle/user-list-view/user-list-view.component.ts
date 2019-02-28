@@ -11,20 +11,19 @@ export class UserListViewController implements ng.IController {
   constructor(private scope: IScope, private userDropDownService: UserDropDownService, private userListFactory: UserListFactory) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.userDropDownService.selectedUserHandle
       .pipe(
         switchMap((index: number) => this.userDropDownService.setNewSelectedUser(index)))
       .subscribe((user) => this.userDropDownService.selectedUser = user);
   }
 
-  onItemClick(index: number) {
+  onItemClick(index: number): void {
     this.userListFactory.isToggled = false;
     this.userDropDownService.selectedUserHandle.next(index);
 
   }
 }
-
 
 export class UserListViewComponent implements ng.IComponentOptions {
   static NAME: string = 'userListViewComponent';
